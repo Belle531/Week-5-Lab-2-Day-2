@@ -1,26 +1,20 @@
-Script1.js
-let slideIndex = 0;
-const slides = document.querySelectorAll(".slide");
+document.addEventListener("DOMContentLoaded", function() { 
+    const cartParagraph = document.getElementById("cartParagraph");
+    const cartButton = document.getElementById("cartButton");
+    const cartHeader = document.getElementById("cartHeader");
 
-function showSlides() {
-    slides.forEach((slide, index) => {
-        slide.style.display = index === slideIndex ? "block" : "none";
-    });
-}
+    function cartChecker() {
+        let name = prompt("What is your name?");
+        let item = prompt("What would you like to buy?");
+        
+        if (item !== null) {
+            cartHeader.innerHTML = `Hi ${name}, there is something in your cart!`;
+            cartParagraph.innerHTML = `You still have an item in your cart. Your ${item} is ready to purchase!`;
+        } else {
+            cartParagraph.innerHTML = "You don't have anything in your cart yet!";
+            cartHeader.innerHTML = "Your Cart.";  
+        }
+    }
 
-function nextSlide() {
-    slideIndex = (slideIndex + 1) % slides.length;
-    showSlides();
-}
-
-function prevSlide() {
-    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-    showSlides();
-}
-
-
-showSlides();
-
-document.getElementById("changeColor").addEventListener("click", function() {
-    document.body.style.backgroundColor = "lightblue";
+    cartButton.onclick = cartChecker;
 });

@@ -64,11 +64,12 @@ body {
   
   .paragraph-1 {
     font-family: 'Poppins', sans-serif;
-    color: #333333;
+    color: blueviolet;
     background-color: #d6eadf;
-    padding: 10px
+    padding: 10px;
   
   }
+  
   footer {
     background-color: #809bce;
     color: #fff;
