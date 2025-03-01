@@ -1,26 +1,43 @@
-document.addEventListener("DOMContentLoaded", function() { 
-    const priceParagraph = document.getElementById("priceParagraph");
-    const calculateButton = document.getElementById("calculateButton");
+let display = document.getElementById("display")
 
-    function complaintChecker() {
-        let price;
-        let tipPercent;
-        let tip;
+function appendNumber (number){
+    display.value += number;
 
-        price = prompt("What was your total bill?");
-        tipPercent = prompt("What percent would you like to tip? (e.g., 0.15)");
-        
-        let priceNumber = Number(price);
-        let tipPercentNumber = Number(tipPercent);
-        tip = priceNumber * tipPercentNumber;
+}
 
-        if (price !== null && tipPercent !== null) {
-            priceParagraph.innerHTML = `Your total bill is $${priceNumber}!`;
-            priceParagraph.innerHTML += ` Your tip should be $${tip.toFixed(2)} at ${(tipPercentNumber * 100).toFixed(2)}%.`;
+function appendOperator(operator) {
+    display.value += operator;
+}
+
+function appendParenthesis(parenthesis){
+display.value += parenthesis;
+}
+
+function toggleSign() {
+    const currentValue = parseFloat
+
+    if (!isNaN(currentValue)) {
+    display.value = String(-parseFloat(display.value));
+}else if (display.value. !== "")(-currentValue); 
+         dusokat.value = "";
+     }
+}
+
+function clearDisplay() {
+    display.value = '';
+}
+function calculateResult() {
+    try {
+        const result =  new Function('return ' + display.value)();
+
+        if (isNaN(result) || !isFinite(result)) {
+            display.value = 'Error';
         } else {
-            priceParagraph.innerHTML = "Calculation cancelled.";
+            display.value = result;
         }
-    }
+    } catch (error) {
+        display.value = 'Error';    
+        console.error("Calculation Error:", error);
 
-    calculateButton.onclick = complaintChecker;
-});
+    }
+}
