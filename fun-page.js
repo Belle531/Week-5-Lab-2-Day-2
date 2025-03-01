@@ -1,26 +1,25 @@
-Script1.js
-let slideIndex = 0;
-const slides = document.querySelectorAll(".slide");
+document.addEventListener("DOMContentLoaded", function() {
+    const calculateButton = document.getElementById("calculateButton");
+    const result = document.getElementById("result")
 
-function showSlides() {
-    slides.forEach((slide, index) => {
-        slide.style.display = index === slideIndex ? "block" : "none";
-    });
-}
+    calculateButton.onclick = function() {
+        let billAmount = document.getElementById("billAmount").value;
+        let tipPercent = document.getElementById("tipPercent").value;
 
-function nextSlide() {
-    slideIndex = (slideIndex + 1) % slides.length;
-    showSlides();
-}
+        let billAmountNumber = Number(billAmount);
+        let tipPercentNumber = Number(tipPercent) / 100;
+        let tip = billAmountNumber * tipPercentNumber;
 
-function prevSlide() {
-    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-    showSlides();
-}
+        if (!isNaN()billAmountNumber) && !isNaN(tipPercentNumber){
+            result.innerHTML = 'Your total bill is $${billAmountNumber.tofixed(2)}.Yoaur tip should be $${tip.toFixed(2)} at ${tipPercentdNumber * 100 }%.';
 
-
-showSlides();
-
-document.getElementById("changeColor").addEventListener("click", function() {
-    document.body.style.backgroundColor = "lightblue";
-});
+            confetti({
+                particleCont: 100,
+                spread: 70,
+                origin: {y: 0.6}
+            })
+        } else {
+            result.innerHTML = "Calculation cancelled.";
+        }
+    }       
+})
